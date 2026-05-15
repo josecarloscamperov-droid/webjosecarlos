@@ -13,6 +13,9 @@
             --gold: #D4AF37;
             --dark: #121212;
             --whatsapp: #25d366;
+            --facebook: #1877F2;
+            --instagram: #E4405F;
+            --tiktok: #000000;
         }
 
         body {
@@ -54,6 +57,44 @@
             outline: none;
             background: rgba(255, 255, 255, 0.1);
         }
+
+        /* Barra de Redes Sociales Flotantes */
+        .social-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-left: 10px;
+        }
+
+        .social-item {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .social-item:hover {
+            width: 55px;
+            transform: translateX(5px);
+        }
+
+        .social-item.fb:hover { background: var(--facebook); border-color: var(--facebook); }
+        .social-item.ig:hover { background: var(--instagram); border-color: var(--instagram); }
+        .social-item.tk:hover { background: var(--tiktok); border-color: #ff0050; }
 
         /* Estilos del Widget de WhatsApp */
         .wa-widget {
@@ -182,6 +223,19 @@
     </style>
 </head>
 <body class="antialiased">
+
+    <!-- Redes Sociales Flotantes -->
+    <div class="social-sidebar">
+        <a href="https://facebook.com/academialavozbolivia" target="_blank" class="social-item fb" title="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/academialavozbolivia" target="_blank" class="social-item ig" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@academialavozbolivia" target="_blank" class="social-item tk" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+    </div>
 
     <!-- Navegación -->
     <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto sticky top-0 bg-[#121212]/80 backdrop-blur-md z-50">
@@ -368,9 +422,9 @@
         <p class="text-[#D4AF37] font-bold tracking-widest mb-2">Cel: 71366453</p>
         <p class="text-gray-500 text-sm mb-6 uppercase tracking-widest">Músico y Maestro Particular</p>
         <div class="flex justify-center space-x-6 mb-8 text-gray-400">
-            <a href="https://wa.me/59171366453" target="_blank" class="hover:text-[#D4AF37]"><i class="fa-brands fa-whatsapp text-xl"></i></a>
-            <a href="#" class="hover:text-[#D4AF37]"><i class="fa-brands fa-instagram text-xl"></i></a>
-            <a href="#" class="hover:text-[#D4AF37]"><i class="fa-brands fa-youtube text-xl"></i></a>
+            <a href="https://facebook.com/academialavozbolivia" target="_blank" class="hover:text-[#D4AF37]"><i class="fa-brands fa-facebook text-xl"></i></a>
+            <a href="https://instagram.com/academialavozbolivia" target="_blank" class="hover:text-[#D4AF37]"><i class="fa-brands fa-instagram text-xl"></i></a>
+            <a href="https://tiktok.com/@academialavozbolivia" target="_blank" class="hover:text-[#D4AF37]"><i class="fa-brands fa-tiktok text-xl"></i></a>
         </div>
         <p class="text-[10px] uppercase tracking-widest text-gray-600">© 2026 Jose Carlos Campero Vaca - Santa Cruz, Bolivia</p>
     </footer>
@@ -439,6 +493,9 @@
         window.addEventListener('click', function(e) {
             const widget = document.getElementById('waWidget');
             const chat = document.getElementById('waChat');
+            const socialSidebar = document.querySelector('.social-sidebar');
+            
+            // Si hace clic fuera del widget de WA lo cierra
             if (!widget.contains(e.target)) {
                 chat.style.display = 'none';
             }
