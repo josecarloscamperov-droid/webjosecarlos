@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jose Carlos Campero Vaca | Clases de Guitarra y Canto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --gold: #D4AF37;
+            --dark: #121212;
+            --whatsapp: #25d366;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: #f3f4f6;
+            scroll-behavior: smooth;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .input-style {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .input-style:focus {
+            border-color: var(--gold);
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Estilos del Widget de WhatsApp */
+        .wa-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .wa-button {
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .wa-button:hover {
+            transform: scale(1.1);
+        }
+
+        .wa-chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+            display: none;
+            flex-direction: column;
+            transform-origin: bottom right;
+            animation: waPop 0.3s ease-out;
+        }
+
+        @keyframes waPop {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .wa-header {
+            background-color: #075e54;
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .wa-header img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .wa-body {
+            padding: 20px;
+            background-color: #e5ddd5;
+            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            max-height: 200px;
+        }
+
+        .wa-message {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 0 15px 15px 15px;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.4;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .wa-footer {
+            padding: 15px;
+            background: white;
+        }
+
+        .wa-send-btn {
+            background-color: var(--whatsapp);
+            color: white;
+            width: 100%;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-image-container {
+                width: 450px;
+                height: 450px;
+            }
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navegación -->
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto sticky top-0 bg-[#121212]/80 backdrop-blur-md z-50">
+        <div class="flex items-center gap-4">
+            <div class="text-2xl font-serif text-white tracking-tighter">
+                JCC<span class="text-[#D4AF37]">V</span>
+            </div>
+            <div class="hidden lg:block h-6 w-[1px] bg-white/10 mx-2"></div>
+            <a href="tel:71366453" class="hidden lg:flex items-center gap-2 text-[#D4AF37] font-bold text-sm tracking-widest">
+                <i class="fa-solid fa-phone text-xs"></i> 71366453
+            </a>
+        </div>
+        <div class="space-x-8 hidden md:flex uppercase text-[10px] tracking-widest font-bold">
+            <a href="#inicio" class="hover:text-[#D4AF37] transition text-white">Inicio</a>
+            <a href="#sobre-mi" class="hover:text-[#D4AF37] transition text-white">Sobre Mí</a>
+            <a href="#servicios" class="hover:text-[#D4AF37] transition text-white">Servicios</a>
+            <a href="#contacto" class="hover:text-[#D4AF37] transition text-white">Contacto</a>
+        </div>
+        <a href="#contacto" class="border border-[#D4AF37] text-[#D4AF37] px-5 py-2 rounded-full text-xs font-bold hover:bg-[#D4AF37] hover:text-black transition">
+            CONTACTAR
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative py-12 md:py-20 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-center min-h-[80vh]">
+        <div class="md:w-1/2 z-10 text-center md:text-left order-2 md:order-1">
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 leading-tight mt-8 md:mt-0 text-white">
+                Domina tu <span class="text-[#D4AF37]">voz</span> y las <span class="text-[#D4AF37]">cuerdas</span>.
+            </h1>
+            <p class="text-lg text-gray-400 mb-8 max-w-lg mx-auto md:mx-0">
+                La música no es solo técnica, es expresión. Aprende con Jose Carlos Campero Vaca y descubre el artista que llevas dentro a través de clases personalizadas.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a href="#contacto" class="gold-gradient text-black px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:opacity-90 transition">
+                    Agendar mi primera clase
+                </a>
+                <a href="#sobre-mi" class="px-8 py-4 rounded-lg font-bold text-sm border border-gray-700 hover:border-gray-500 transition text-white">
+                    Conocer mi historia
+                </a>
+            </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center order-1 md:order-2">
+            <div class="hero-image-container">
+                <img src="https://lh3.googleusercontent.com/d/17KpKVM30-6e0LdfvddjT922ZYP4me-N1" 
+                     alt="Jose Carlos Campero Vaca"
+                     onerror="this.src='https://via.placeholder.com/450x450/121212/D4AF37?text=Jose+Carlos+Campero'">
+                <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-[#D4AF37]/20 rounded-full blur-2xl"></div>
+                <div class="absolute -top-6 -left-6 w-16 h-16 bg-[#D4AF37]/10 rounded-full blur-xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section id="sobre-mi" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="flex flex-col md:flex-row gap-16 items-center">
+            <div class="md:w-1/2">
+                <span class="text-[#D4AF37] uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Mi Trayectoria</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mb-8">Jose Carlos Campero Vaca</h2>
+                <div class="space-y-6 text-gray-400 leading-relaxed text-lg">
+                    <p>
+                        Con años de dedicación al arte sonoro, he transformado mi pasión por la guitarra y el canto en una metodología de enseñanza que prioriza la conexión emocional con el instrumento.
+                    </p>
+                    <p>
+                        Mi enfoque no es solo que toques una canción, sino que entiendas la estructura, la teoría y la técnica necesaria para que puedas crear tu propio estilo. Creo firmemente que cualquier persona, con la guía correcta, puede alcanzar la excelencia musical.
+                    </p>
+                    <div class="pt-4">
+                        <a href="tel:71366453" class="inline-flex items-center gap-3 text-white hover:text-[#D4AF37] transition font-bold tracking-widest text-base">
+                            <span class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#D4AF37]">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            +591 71366453
+                        </a>
+                    </div>
+                </div>
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-white/10">
+                    <div>
+                        <p class="text-3xl font-serif text-white">10+</p>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500">Años de Exp.</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-serif text-white">100+</p>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500">Alumnos</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-serif text-white">∞ </p>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500">Pasión</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <div class="glass-card p-4 rounded-3xl overflow-hidden">
+                    <div class="bg-neutral-800 rounded-2xl aspect-[4/5] flex items-center justify-center italic text-gray-600">
+                        [Imagen de Jose Carlos enseñando música]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-24 bg-black/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-serif mb-4 text-white uppercase tracking-wider">Servicios Profesionales</h2>
+                <p class="text-gray-400">Especialidades diseñadas para tu crecimiento musical.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Guitarra -->
+                <div class="glass-card p-10 rounded-2xl group">
+                    <i class="fa-solid fa-guitar text-4xl text-[#D4AF37] mb-6 block"></i>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Clases de Guitarra</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Desde los acordes básicos hasta teoría aplicada y composición. Nos enfocamos en el estilo que más te guste: Acústica, Eléctrica o Clásica.
+                    </p>
+                    <ul class="text-sm space-y-3 text-gray-300 mb-8">
+                        <li><i class="fa-solid fa-check text-[#D4AF37] mr-2"></i> Postura y técnica de manos</li>
+                        <li><i class="fa-solid fa-check text-[#D4AF37] mr-2"></i> Lectura de tablaturas y partituras</li>
+                        <li><i class="fa-solid fa-check text-[#D4AF37] mr-2"></i> Improvisación y solos</li>
+                    </ul>
+                    <button onclick="prefillForm('Guitarra')" class="text-white font-bold group-hover:text-[#D4AF37] transition uppercase text-xs tracking-widest">Solicitar Info <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></button>
+                </div>
+
+                <!-- Canto -->
+                <div class="glass-card p-10 rounded-2xl group">
+                    <i class="fa-solid fa-microphone-lines text-4xl text-[#D4AF37] mb-6 block"></i>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Clases de Canto</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Libera tu voz sin lastimarte. Trabajamos técnica respiratoria, colocación vocal y proyección para que cantes con confianza.
+                    </p>
+                    <ul class="text-sm space-y-3 text-gray-300 mb-8">
+                        <li><i class="fa-solid fa-check text-[#D4AF37] mr-2"></i> Control diafragmático</li>
+                        <li><i class="fa-solid fa-check text-[#D4AF37] mr-2"></i> Afinación y dicción</li>
+                        <li><i class="fa-solid fa-check text-[#D4AF37] mr-2"></i> Interpretación emocional</li>
+                    </ul>
+                    <button onclick="prefillForm('Canto')" class="text-white font-bold group-hover:text-[#D4AF37] transition uppercase text-xs tracking-widest">Solicitar Info <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de Contacto -->
+    <section id="contacto" class="py-24 px-6 max-w-4xl mx-auto">
+        <div class="glass-card p-8 md:p-12 rounded-3xl relative overflow-hidden">
+            <div class="relative z-10">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-serif text-white mb-4">Empieza hoy mismo</h2>
+                    <p class="text-gray-400">Escríbeme por WhatsApp al <span class="text-[#D4AF37]">71366453</span> o completa el formulario.</p>
+                </div>
+
+                <form id="whatsappForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-[#D4AF37] font-bold mb-2">Nombre Completo</label>
+                            <input type="text" id="nombre" required placeholder="Tu nombre..." class="w-full p-4 rounded-xl input-style">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-widest text-[#D4AF37] font-bold mb-2">Servicio de Interés</label>
+                            <select id="servicio" class="w-full p-4 rounded-xl input-style">
+                                <option value="Guitarra">Clases de Guitarra</option>
+                                <option value="Canto">Clases de Canto</option>
+                                <option value="Ambos">Guitarra y Canto</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest text-[#D4AF37] font-bold mb-2">Tu Mensaje</label>
+                        <textarea id="mensaje" rows="4" placeholder="Cuéntame sobre tu nivel actual..." class="w-full p-4 rounded-xl input-style"></textarea>
+                    </div>
+                    <button type="submit" class="w-full gold-gradient text-black font-bold py-4 rounded-xl uppercase tracking-widest hover:opacity-90 transition flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Mensaje a WhatsApp
+                    </button>
+                </form>
+            </div>
+            <!-- Decoración fondo formulario -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 text-center">
+        <p class="text-2xl font-serif mb-4 text-white">Jose Carlos Campero Vaca</p>
+        <p class="text-[#D4AF37] font-bold tracking-widest mb-2">Cel: 71366453</p>
+        <p class="text-gray-500 text-sm mb-6 uppercase tracking-widest">Músico y Maestro Particular</p>
+        <div class="flex justify-center space-x-6 mb-8 text-gray-400">
+            <a href="https://wa.me/59171366453" target="_blank" class="hover:text-[#D4AF37]"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+            <a href="#" class="hover:text-[#D4AF37]"><i class="fa-brands fa-instagram text-xl"></i></a>
+            <a href="#" class="hover:text-[#D4AF37]"><i class="fa-brands fa-youtube text-xl"></i></a>
+        </div>
+        <p class="text-[10px] uppercase tracking-widest text-gray-600">© 2026 Jose Carlos Campero Vaca - Santa Cruz, Bolivia</p>
+    </footer>
+
+    <!-- Widget de WhatsApp Interactivo -->
+    <div class="wa-widget" id="waWidget">
+        <div class="wa-chat-window" id="waChat">
+            <div class="wa-header">
+                <img src="https://lh3.googleusercontent.com/d/17KpKVM30-6e0LdfvddjT922ZYP4me-N1" alt="Jose Carlos">
+                <div>
+                    <h4 class="font-bold text-sm">Jose Carlos Campero</h4>
+                    <p class="text-[10px] opacity-80">Suele responder al instante</p>
+                </div>
+            </div>
+            <div class="wa-body">
+                <div class="wa-message">
+                    ¡Hola! 👋 Soy Jose Carlos. ¿Te gustaría agendar una clase de prueba o tienes alguna duda sobre las clases?
+                </div>
+            </div>
+            <div class="wa-footer">
+                <a href="https://wa.me/59171366453" target="_blank" class="wa-send-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Iniciar Chat
+                </a>
+            </div>
+        </div>
+        <div class="wa-button" onclick="toggleWaChat()">
+            <i class="fa-brands fa-whatsapp"></i>
+        </div>
+    </div>
+
+    <script>
+        // Función para el Widget de Chat
+        function toggleWaChat() {
+            const chat = document.getElementById('waChat');
+            if (chat.style.display === 'flex') {
+                chat.style.display = 'none';
+            } else {
+                chat.style.display = 'flex';
+            }
+        }
+
+        // Función para enviar a WhatsApp desde el formulario
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const servicio = document.getElementById('servicio').value;
+            const mensaje = document.getElementById('mensaje').value;
+            const telefono = "59171366453";
+
+            const texto = `Hola Jose Carlos! Mi nombre es ${nombre}. Estoy interesado en tus clases de ${servicio}. ${mensaje}`;
+            const encodedText = encodeURIComponent(texto);
+            const url = `https://wa.me/${telefono}?text=${encodedText}`;
+
+            window.open(url, '_blank');
+        });
+
+        // Función para pre-llenar el formulario desde los servicios
+        function prefillForm(servicio) {
+            document.getElementById('servicio').value = servicio;
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('nombre').focus();
+        }
+
+        // Cerrar chat si se hace clic fuera
+        window.addEventListener('click', function(e) {
+            const widget = document.getElementById('waWidget');
+            const chat = document.getElementById('waChat');
+            if (!widget.contains(e.target)) {
+                chat.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
